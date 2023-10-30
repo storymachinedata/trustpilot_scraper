@@ -1,0 +1,14 @@
+## Libraries
+numpy<=1.24.0
+pandas>=2.1.0
+XlsxWriter>=3.1.7
+googletrans==3.1.0a0
+openpyxl>=3.1.2
+fastapi>=0.104.1
+beautifulsoup4>=4.12.2
+
+# IDE
+jupyterlab>=4.0.6
+
+# Visualisation
+plotly>=5.17.0
