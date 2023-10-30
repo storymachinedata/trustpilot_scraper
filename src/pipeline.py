@@ -4,6 +4,15 @@ from src.scrapper import Scrapper
 
 
 def collect_data(scrapper: Scrapper) -> List:
+    """Collects data from website using Scraper object.
+
+    Args:
+        scrapper (Scrapper): This class is a scraper built to
+        scrape trust-pilot.
+
+    Returns:
+        List: Returns all data scraped as a list
+    """
     return scrapper.get_data()
 
 
