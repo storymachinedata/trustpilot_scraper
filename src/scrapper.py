@@ -35,22 +35,20 @@ class Scrapper:
                 return self.df_data
 
             for review in data:
-                reviews = []
-                reviews.extend(
-                    [
-                        review["consumer"]["displayName"],
-                        review["consumer"]["countryCode"],
-                        review["dates"]["publishedDate"],
-                        review["title"],
-                        review["text"],
-                        review["rating"],
-                        review["likes"],
-                    ]
-                )
+                reviews = {
+                    "reviewerName": review["consumer"]["displayName"],
+                    "reviewerCountryCode": review["consumer"]["countryCode"],
+                    "postDate": review["dates"]["publishedDate"],
+                    "postTitle": review["title"],
+                    "postContent": review["text"],
+                    "rating": review["rating"],
+                    "likes": review["likes"],
+                }
 
                 if review["reply"] != None:
-                    reviews.append(review["reply"]["message"])
+                    reviews["reply"] = review["reply"]["message"]
                 else:
-                    reviews.append(None)
+                    reviews["reply"] = None
+
                 self.df_data.append(reviews)
         return self.df_data
