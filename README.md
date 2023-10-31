@@ -6,11 +6,12 @@ FastAPI endpoint to fetch the data.
 
 ## Installation
 
-**MacOS**
-
 Requirements:
 
 - Python 3.9+
+- Docker
+
+**MacOS**
 
 Setup:
 
@@ -63,6 +64,18 @@ $ .\.env\Scripts\activate
 ```{bash}
 $ pip install --no-cache-dir -r requirements.txt
 ```
+## Running the API
+
+1. Build Docker image
+```{bash}
+$ docker build -t trust-pilot-scraper:0.0.1 .
+```
+
+2. Run Docker container
+```{bash}
+$ docker run -p 80:80 trust-pilot-scraper:0.0.1
+```
+visit the url [0.0.0.0:80/docs](http://0.0.0.0:80/docs)
 
 ## Versioning
 
@@ -71,6 +84,6 @@ $ pip install --no-cache-dir -r requirements.txt
 |0.0.1        | This version scrapes data from a given website|
 
 
-## API docs
+## API documentation
 
-Check the FastAPI docs at [0.0.0.0:80/docs]
+Check the FastAPI docs at [0.0.0.0:80/docs](http://0.0.0.0:80/docs)
