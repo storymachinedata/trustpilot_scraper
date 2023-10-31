@@ -1,5 +1,6 @@
 from typing import List
 import json
+import time
 import requests
 import pandas as pd
 import datetime as dt
@@ -49,7 +50,7 @@ class Scrapper:
             data = self.get_json_data(page=page)
             if data == None:
                 print("Rate Limited")
-                return self.df_data
+                return self.df_data, page
 
             for review in data:
                 reviews = {
@@ -68,5 +69,6 @@ class Scrapper:
                     reviews["reply"] = None
 
                 self.df_data.append(reviews)
-
-        return self.df_data
+            if page % 100 == 0:
+                time.sleep(60)
+        return self.df_data, page

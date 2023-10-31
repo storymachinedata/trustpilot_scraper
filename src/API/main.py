@@ -1,4 +1,5 @@
 from typing import List
+from datetime import datetime
 from fastapi import FastAPI
 from src.scrapper import Scrapper
 from src.pipeline import collect_data
@@ -32,5 +33,8 @@ def execute_pipeline(website_name: str, end_page: int, start_page: int = 1) -> L
     scrapper = Scrapper(
         website_name=website_name, start_page=start_page, end_page=end_page
     )
-    data = collect_data(scrapper=scrapper)
+    print(f"log({datetime.now()}): starting to scrape: {website_name}")
+    data, page = collect_data(scrapper=scrapper)
+    print(f"log({datetime.now()}): finished scraping: {page}")
+
     return data
