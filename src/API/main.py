@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from src.scrapper import Scrapper
-from src.pipeline import collect_data, convert_scraped_data_to_df
+from src.pipeline import collect_data
 
 app = FastAPI()
 
