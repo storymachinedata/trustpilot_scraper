@@ -4,6 +4,12 @@
 This project is built to scrape review data from trust pilot and expose a
 FastAPI endpoint to fetch the data.
 
+## Version
+
+| Version     |                            Description        |
+| ----------- | ----------------------------------------------|
+|0.0.1        | This version scrapes data from a given website|
+
 ## Installation
 
 Requirements:
@@ -76,13 +82,6 @@ $ docker build -t trust-pilot-scraper:0.0.1 .
 $ docker run -p 80:80 trust-pilot-scraper:0.0.1
 ```
 visit the url [0.0.0.0:80/docs](http://0.0.0.0:80/docs)
-
-## Versioning
-
-| Version     |                            Description        |
-| ----------- | ----------------------------------------------|
-|0.0.1        | This version scrapes data from a given website|
-
 
 ## API documentation
 
