@@ -1,8 +1,9 @@
-from bs4 import BeautifulSoup
+from typing import List
+import json
 import requests
 import pandas as pd
 import datetime as dt
-import json
+from bs4 import BeautifulSoup
 
 
 class Scrapper:
@@ -12,7 +13,15 @@ class Scrapper:
         self.end_page = end_page
         self.df_data = []
 
-    def get_json_data(self, page: int):
+    def get_json_data(self, page: int) -> List:
+        """This function collect the props meta data from the provided link.
+
+        Args:
+            page (int): Page number to scrape.
+
+        Returns:
+            List: Returns a list of dictionaries with raw props scraped from the website.
+        """
         response = requests.get(
             f"https://de.trustpilot.com/review/{self.website_name}?page={page}"
         )
@@ -27,7 +36,15 @@ class Scrapper:
         except:
             return None
 
-    def get_data(self):
+    def get_data(self) -> List:
+        """This function fetchs the raw data from the website.
+        We extract the necessary data from the props and
+        send it to the endpoint.
+
+        Returns:
+            List: Retruns the list of dictionaries that contain the necessary
+            data to be scraped from trust-pilot.
+        """
         for page in range(self.start_page, self.end_page + 1):
             data = self.get_json_data(page=page)
             if data == None:
@@ -51,4 +68,5 @@ class Scrapper:
                     reviews["reply"] = None
 
                 self.df_data.append(reviews)
+
         return self.df_data
